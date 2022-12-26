@@ -2,7 +2,11 @@ package cpurender;
 
 import cpurender.graphics.Scene;
 import cpurender.graphics.Viewport;
+import cpurender.graphics.shading.shaders.custom.FunkyColorShader;
+import cpurender.graphics.shading.shaders.custom.NiceSkyShader;
+import cpurender.graphics.shading.shaders.custom.WavyVertexShader;
 import geometry.Geometry;
+import geometry.shapes.Circle;
 
 import java.util.Random;
 
@@ -44,18 +48,18 @@ public class Test {
         // cpurender.graphics.Scene setup
         int numitems = (int) Math.floor(rand.nextDouble() * 100);
         for (int i = 0; i < numitems; i++) {
-            scene.addElement(new geometry.shapes.Square(rand.nextDouble() * (application.getWidth() - 50),
-                    rand.nextDouble() * (application.getHeight() - 50),
-                    30));
-//            scene.addElement(new Circle(rand.nextDouble() * (application.getWidth() - 50),
+//            scene.addElement(new geometry.shapes.Square(rand.nextDouble() * (application.getWidth() - 50),
 //                    rand.nextDouble() * (application.getHeight() - 50),
-//                    15));
+//                    30));
+            scene.addElement(new Circle(rand.nextDouble() * (application.getWidth() - 50),
+                    rand.nextDouble() * (application.getHeight() - 50),
+                    15));
         }
 
         // Setup shading
-//        application.getRenderer().setVertexShader(new WavyVertexShader());
-//        application.getRenderer().setFragmentShader(new FunkyFragmentShader());
-//        application.getRenderer().setSkyShader(new NiceSkyShader());
+        application.getRenderer().setVertexShader(new WavyVertexShader());
+//        application.getRenderer().setColorShader(new FunkyColorShader());
+        application.getRenderer().setSkyShader(new NiceSkyShader());
 
         // cpurender.Application launch
         application.run();
