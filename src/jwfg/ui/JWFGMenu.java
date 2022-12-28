@@ -50,45 +50,28 @@ public class JWFGMenu extends JFrame {
             return null;
         });
 
-        JWFGTextField xInput = new JWFGTextField("X", "0");
-        xInput.setLocation(8, 56);
-        this.add(xInput);
+        // Generate central panel
+        JWFGVerticalPaddingPanel infoControlPanel = (JWFGVerticalPaddingPanel) this.add(new JWFGVerticalPaddingPanel(8));
+        infoControlPanel.setSize(this.getWidth(), 76);
+        infoControlPanel.setLocation(0, 48);
 
-        JWFGTextField yInput = new JWFGTextField("Y", "0");
-        yInput.setLocation(80, 56);
-        this.add(yInput);
+        // Generate two lines
+        JWFGHorizontalPaddingPanel itemControlPanel  = (JWFGHorizontalPaddingPanel) infoControlPanel.add(new JWFGHorizontalPaddingPanel(8));
+        JWFGHorizontalPaddingPanel viewportControlPanel  = (JWFGHorizontalPaddingPanel) infoControlPanel.add(new JWFGHorizontalPaddingPanel(8));
 
-        JWFGTextField zInput = new JWFGTextField("Z", "0");
-        zInput.setLocation(152, 56);
-        this.add(zInput);
+        // Generate item panel
+        JWFGTextField xInput = (JWFGTextField) itemControlPanel.add(new JWFGTextField("X", "0"));
+        JWFGTextField yInput = (JWFGTextField) itemControlPanel.add(new JWFGTextField("Y", "0"));
+        JWFGTextField zInput = (JWFGTextField) itemControlPanel.add(new JWFGTextField("Z", "0"));
+        JWFGTextField rotXInput = (JWFGTextField) itemControlPanel.add(new JWFGTextField("Rot X", "0"));
+        JWFGTextField rotYInput = (JWFGTextField) itemControlPanel.add(new JWFGTextField("Rot Y", "0"));
 
-        JWFGTextField rotXInput = new JWFGTextField("Rot X", "0");
-        rotXInput.setLocation(224, 56);
-        this.add(rotXInput);
-
-        JWFGTextField rotYInput = new JWFGTextField("Rot Y", "0");
-        rotYInput.setLocation(296, 56);
-        this.add(rotYInput);
-
-        JWFGTextField vxInput = new JWFGTextField("View X", "0");
-        vxInput.setLocation(8, 90);
-        this.add(vxInput);
-
-        JWFGTextField vyInput = new JWFGTextField("View Y", "0");
-        vyInput.setLocation(80, 90);
-        this.add(vyInput);
-
-        JWFGTextField vzInput = new JWFGTextField("View Z", "0");
-        vzInput.setLocation(152, 90);
-        this.add(vzInput);
-
-        JWFGTextField vrotXInput = new JWFGTextField("View Pitch", "0");
-        vrotXInput.setLocation(224, 90);
-        this.add(vrotXInput);
-
-        JWFGTextField vrotYInput = new JWFGTextField("View Yaw", "0");
-        vrotYInput.setLocation(296, 90);
-        this.add(vrotYInput);
+        // Generate viewport panel
+        JWFGTextField vxInput = (JWFGTextField) viewportControlPanel.add(new JWFGTextField("View X", "0"));
+        JWFGTextField vyInput = (JWFGTextField) viewportControlPanel.add(new JWFGTextField("View Y", "0"));
+        JWFGTextField vzInput = (JWFGTextField) viewportControlPanel.add(new JWFGTextField("View Z", "0"));
+        JWFGTextField vrotXInput = (JWFGTextField) viewportControlPanel.add(new JWFGTextField("View Pitch", "0"));
+        JWFGTextField vrotYInput = (JWFGTextField) viewportControlPanel.add(new JWFGTextField("View Yaw", "0"));
 
         this.add(new JWFGButton("Start", 8, this.getHeight() - 72, this.getWidth() - 24, 32, () -> {
             JWFGInstanceRequest req = new JWFGInstanceRequest(
@@ -107,7 +90,6 @@ public class JWFGMenu extends JFrame {
                                 0));
 
 
-//            System.out.println(this.getHeight());
             System.out.println(req);
             return null;
         }));

@@ -42,4 +42,16 @@ public class JWFGTextField extends Panel {
     public void setText(String text) {
         this.textField.setText(text);
     }
+
+    @Override
+    public void setSize(Dimension d) {
+        super.setSize(1, 1);
+    }
+
+    @Override
+    public void setSize(int width, int height) {
+        super.setSize(width, height);
+        if (this.label != null) this.label.setSize(width, this.label.getHeight());
+        if (this.textField != null) this.textField.setSize(width, this.textField.getHeight());
+    }
 }
